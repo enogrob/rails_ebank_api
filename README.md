@@ -100,20 +100,6 @@ mindmap
 </details>
 
 <details>
-<summary><strong>3. Deployment Architecture</strong> (Click to expand)</summary>
-
-```mermaid
-graph TD
-    User[User]
-    Ngrok[ngrok]
-    RailsServer[Rails API Server]
-    User --> Ngrok
-    Ngrok --> RailsServer
-```
-
-</details>
-
-<details>
 <summary><strong>4. Git Graph</strong> (Click to expand)</summary>
 
 ```mermaid
