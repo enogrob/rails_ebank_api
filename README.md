@@ -212,7 +212,7 @@ curl -X POST http://localhost:3000/event -H "Content-Type: application/json" -d 
 
 Publishing it on the internet using [ngrok](http://ngrok.com), and testing it using the automated test suite [Ipkiss Tester](http://ipkiss.pragmazero.com).
 
-```json
+```bash
 ❌ Reset state before starting tests
 POST /reset
 Expected: 200 OK
