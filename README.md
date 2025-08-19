@@ -33,27 +33,37 @@ Key features include:
 
 ```mermaid
 graph TD
-    subgraph "Routing Layer"
-        Routes[Routes]
-    end
-    subgraph "Controller Layer"
-        EventsController[EventsController]
-        BalancesController[BalancesController]
-        ResetController[ResetController]
-    end
-    subgraph "Service Layer"
-        AccountService[AccountService]
-    end
-    subgraph "Model Layer"
-        Account[Account]
-    end
-    Routes --> EventsController
-    Routes --> BalancesController
-    Routes --> ResetController
-    EventsController --> AccountService
-    BalancesController --> AccountService
-    ResetController --> AccountService
-    AccountService --> Account
+  classDef pastelBlue fill:#dbeafe,stroke:#60a5fa,color:#1e293b;
+  classDef pastelGreen fill:#bbf7d0,stroke:#34d399,color:#065f46;
+  classDef pastelYellow fill:#fef9c3,stroke:#fde047,color:#92400e;
+  classDef pastelPink fill:#fbcfe8,stroke:#f472b6,color:#831843;
+
+  subgraph "Routing Layer"
+    Routes[🌐 Routes]
+  end
+  subgraph "Controller Layer"
+    EventsController[📝 EventsController]
+    BalancesController[💰 BalancesController]
+    ResetController[🔄 ResetController]
+  end
+  subgraph "Service Layer"
+    AccountService[🛠️ AccountService]
+  end
+  subgraph "Model Layer"
+    Account[🏦 Account]
+  end
+  Routes --> EventsController
+  Routes --> BalancesController
+  Routes --> ResetController
+  EventsController --> AccountService
+  BalancesController --> AccountService
+  ResetController --> AccountService
+  AccountService --> Account
+
+  class Routes pastelBlue;
+  class EventsController,BalancesController,ResetController pastelGreen;
+  class AccountService pastelYellow;
+  class Account pastelPink;
 ```
 
 <details>
@@ -61,17 +71,26 @@ graph TD
 
 ```mermaid
 graph TD
-    subgraph "Core Gems"
-        Rails[Rails]
-        RSpec[rspec-rails]
-        SimpleCov[SimpleCov]
-    end
-    subgraph "Models"
-        Account
-    end
-    Rails --> Account
-    RSpec --> Account
-    SimpleCov --> RSpec
+  classDef pastelBlue fill:#dbeafe,stroke:#60a5fa,color:#1e293b;
+  classDef pastelGreen fill:#bbf7d0,stroke:#34d399,color:#065f46;
+  classDef pastelYellow fill:#fef9c3,stroke:#fde047,color:#92400e;
+
+  subgraph "Core Gems"
+    Rails[💎 Rails]
+    RSpec[🧪 rspec-rails]
+    SimpleCov[📊 SimpleCov]
+  end
+  subgraph "Models"
+    Account[🏦 Account]
+  end
+  Rails --> Account
+  RSpec --> Account
+  SimpleCov --> RSpec
+
+  class Rails pastelBlue;
+  class RSpec pastelGreen;
+  class SimpleCov pastelYellow;
+  class Account pastelBlue;
 ```
 
 </details>
@@ -81,20 +100,20 @@ graph TD
 
 ```mermaid
 mindmap
-  root((rails_ebank_api))
+  root((rails_ebank_api 🏦))
     API
-      EventsController
-      BalancesController
-      ResetController
+      EventsController(📝)
+      BalancesController(💰)
+      ResetController(🔄)
     Service
-      AccountService
+      AccountService(🛠️)
     Model
-      Account
+      Account(🏦)
     Testing
-      RSpec
-      SimpleCov
+      RSpec(🧪)
+      SimpleCov(📊)
     Deployment
-      Ngrok
+      Ngrok(🌍)
 ```
 
 </details>
@@ -104,17 +123,17 @@ mindmap
 
 ```mermaid
 gitGraph
-commit id: "setup-rails"
-commit id: "setup-rspec"
-commit id: "setup-models"
-commit id: "setup-services"
-commit id: "setup-controllers"
-commit id: "setup-routes"
-commit id: "setup-simplecov"
-commit id: "add-unit-tests"
-commit id: "add-functional-tests"
-commit id: "setup-grok"
-commit id: "add-readme"
+  commit id: "rails-setup" tag: "🚀"
+  commit id: "rspec-setup" tag: "🧪"
+  commit id: "models-setup" tag: "🏦"
+  commit id: "services-setup" tag: "🛠️"
+  commit id: "controllers-setup" tag: "📝"
+  commit id: "routes-setup" tag: "🌐"
+  commit id: "simplecov-setup" tag: "📊"
+  commit id: "unit-tests" tag: "✅"
+  commit id: "functional-tests" tag: "🔬"
+  commit id: "grok-setup" tag: "🌍"
+  commit id: "readme-added" tag: "📖"
 ```
 
 </details>
@@ -129,10 +148,6 @@ commit id: "add-readme"
 * **RSpec**: Testing framework for Ruby, used for unit, functional, and integration tests.
 * **SimpleCov**: Code coverage analysis tool for Ruby projects.
 * **Ngrok**: Tool for exposing local servers to the internet for testing and development.
-
-### Tech Stack
-
-* **Programming Language**: Ruby 3.x
 * **Framework**: Rails 8.x (API mode)
 * **Testing Framework**: RSpec, SimpleCov
 * **API**: RESTful JSON endpoints
@@ -144,36 +159,7 @@ commit id: "add-readme"
    ```sh
    git clone https://github.com/enogrob/rails_ebank_api.git
    cd rails_ebank_api
-   ```
-2. Install dependencies:
-   ```sh
-   bundle install
-   ```
-3. Run the Rails server:
-   ```sh
-   bin/dev
-   # or
-   rails server
-   ```
-4. Run tests:
-   ```sh
-   bundle exec rspec
-   open coverage/index.html
-   ```
-5. Expose your local server with ngrok:
-   ```sh
-   ngrok http 3000
-   ```
-
-### Usage Examples
-
-
-**Example API Flow:**
-
-```sh
-# 1. Reset state before starting tests
-curl -X POST http://localhost:3000/reset 
-# Response: (empty, status 200)
+```
 
 # 2. Get balance for non-existing account
 curl http://localhost:3000/balance?account_id=1234 
